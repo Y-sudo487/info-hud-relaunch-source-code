@@ -1,0 +1,14 @@
+{
+	"required": true,
+	"package": "net.ysudo487.info_hud_relaunch.mixin",
+	"compatibilityLevel": "JAVA_25",
+	"mixins": [
+		"ExampleMixin"
+	],
+	"injectors": {
+		"defaultRequire": 1
+	},
+	"overwrites": {
+		"requireAnnotations": true
+	}
+}

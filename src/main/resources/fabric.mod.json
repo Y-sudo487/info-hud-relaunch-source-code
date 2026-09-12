@@ -1,0 +1,36 @@
+{
+	"schemaVersion": 1,
+	"id": "info-hud-relaunch",
+	"version": "${version}",
+	"name": "Info Hud Relaunch",
+	"description": "",
+	"authors": [
+		"Y_Sudo487"
+	],
+	"contact": {
+		"homepage": ""
+	},
+	"license": "CC0-1.0",
+	"icon": "assets/info-hud-relaunch/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"net.ysudo487.info_hud_relaunch.InfoHudRelaunch"
+		],
+		"client":[
+			"net.ysudo487.info_hud_relaunch.InfoHudRelaunchClient"
+		],
+		"fabric-datagen": [
+			"net.ysudo487.info_hud_relaunch.InfoHudRelaunchDataGenerator"
+		]
+	},
+	"mixins": [
+		"info-hud-relaunch.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.19.3",
+		"minecraft": "~26.2",
+		"java": ">=25",
+		"fabric-api": "*"
+	}
+}
