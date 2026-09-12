@@ -26,6 +26,7 @@ public class InfoHudRelaunchEditScreen extends Screen {
 
   public InfoHudRelaunchEditScreen(Component title) {
     super(title);
+
   }
 
   @Override
