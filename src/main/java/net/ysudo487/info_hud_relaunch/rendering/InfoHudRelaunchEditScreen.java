@@ -123,8 +123,6 @@ public class InfoHudRelaunchEditScreen extends Screen {
     });
 
 
-
-
     this.addRenderableWidget(FPSColorEditBox);
     this.addRenderableWidget(PosColorEditBox);
     this.addRenderableWidget(BiomeColorEditBox);
