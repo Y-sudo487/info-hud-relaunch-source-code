@@ -1,18 +1,18 @@
-**First:** The Relaunch Name Is Because I Made A Mod Like This In 2025, But Deleted It Due To Many Issues. (If You're Wondering, The Mod Name Was Info Hud++)
+**First:** The Relaunch Name Is Because I Made A Mod Like This In 2025, But Deleted It Due To Many Issues. (If You're Wondering, The Mod Name Was Info HUD++)
 
 **Second:** The Idea For This Mod Came From A Friend Of Mine.
 
 **Third:** Current Mod Features Are (As Of Beta 0.0.5):
 
-(1) The Ability To Adjust Visibility Of The Hud Using A Set Keybind (H).
+(1) To toggle the HUD on/off, use the keybind (H).
 
-(2) The Ability To Edit The Hud By Opening The Edit Screen Using (G).
+(2) To Edit The HUD, Open The Edit Screen Using (G).
 
-(3) The Ability To Adjust Colors.
+(3) You can adjust the colors of every part of the HUD.
 
-(4) The Ability To Adjust Y Position.
+(4) You can adjust the Y Position of every part of the HUD.
 
-(5) The Ability To Adjust Drop Shadow Of Text.
+(5) You can adjust the drop shadow of the text of every part of the HUD.
 
 **Fourth:**
 
