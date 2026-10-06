@@ -122,7 +122,6 @@ public class InfoHudRelaunchEditScreen extends Screen {
       DayDropShadowBtn.setMessage(Component.literal("Day Shadow: OFF"));
     });
 
-
     this.addRenderableWidget(FPSColorEditBox);
     this.addRenderableWidget(PosColorEditBox);
     this.addRenderableWidget(BiomeColorEditBox);
