@@ -8,7 +8,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 
 public class InfoHudRelaunchSaveConfig {
-  private static final Path Config_Paht =
+  private static final Path Config_Path =
       FabricLoader.getInstance().getConfigDir().resolve("info_hud_relaunch_colors.txt");
 
   public static void Info_Hud_Save(
@@ -29,14 +29,14 @@ public class InfoHudRelaunchSaveConfig {
             BiomeY + "Info_Hud_Save_Config_K" +
             DayY;
 
-    Files.writeString(Config_Paht, Data, StandardCharsets.UTF_8);
+    Files.writeString(Config_Path, Data, StandardCharsets.UTF_8);
   }
 
   public static Object[] Info_Hud_Load() throws IOException {
     Object[] Info_Hud_Default_Configs = {false, false, false, false, 0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 5, 22, 39, 56};
-    if (!Files.exists(Config_Paht)) return Info_Hud_Default_Configs;
+    if (!Files.exists(Config_Path)) return Info_Hud_Default_Configs;
 
-    String[] Info_Hud_String = Files.readString(Config_Paht, StandardCharsets.UTF_8).trim().split("Info_Hud_Save_Config_K");
+    String[] Info_Hud_String = Files.readString(Config_Path, StandardCharsets.UTF_8).trim().split("Info_Hud_Save_Config_K");
     if (Info_Hud_String.length != 12) return Info_Hud_Default_Configs;
 
     Object[] Info_Hud_Obj = new Object[12];
