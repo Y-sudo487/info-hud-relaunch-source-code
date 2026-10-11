@@ -14,37 +14,38 @@ import net.ysudo487.info_hud_relaunch.rendering.InfoHudRelaunchHud;
 import java.io.IOException;
 
 public class InfoHudRelaunchClient implements ClientModInitializer {
-  private static final KeyMapping.Category Info_Hud_Custom_Category = KeyMapping.Category.register(
+  private static final KeyMapping.Category IHCC = KeyMapping.Category.register(
       Identifier.fromNamespaceAndPath(InfoHudRelaunch.MOD_ID, "info_hud_custom_category")
   );
-  private static KeyMapping ToggleEditScreenKey;
-  private static KeyMapping ToggleHudKey;
+  private static KeyMapping TESK;
+  private static KeyMapping THK;
 
   @Override
   public void onInitializeClient() {
     try {
-      Object[] Loaded = InfoHudRelaunchSaveConfig.Info_Hud_Load();
-      InfoHudRelaunchEditScreen.FpsDropShadowEnabled = (boolean) Loaded[0];
-      InfoHudRelaunchEditScreen.PosDropShadowEnabled = (boolean) Loaded[1];
-      InfoHudRelaunchEditScreen.BiomeDropShadowEnabled = (boolean) Loaded[2];
-      InfoHudRelaunchEditScreen.DayDropShadowEnabled = (boolean) Loaded[3];
-      InfoHudRelaunchHud.FPSColor = (int) Loaded[4];
-      InfoHudRelaunchHud.POSColor = (int) Loaded[5];
-      InfoHudRelaunchHud.BiomeColor = (int) Loaded[6];
-      InfoHudRelaunchHud.DayColor = (int) Loaded[7];
-      InfoHudRelaunchHud.FPSY = (int) Loaded[8];
-      InfoHudRelaunchHud.CoordinatesY = (int) Loaded[9];
-      InfoHudRelaunchHud.BiomeY = (int) Loaded[10];
-      InfoHudRelaunchHud.DayY = (int) Loaded[11];
-    } catch (IOException e) {
-      throw new RuntimeException(e);
+//      L Short For Load
+      Object[] L = InfoHudRelaunchSaveConfig.Info_Hud_Load();
+      InfoHudRelaunchEditScreen.FDSE = (boolean) L[0];
+      InfoHudRelaunchEditScreen.PDSE = (boolean) L[1];
+      InfoHudRelaunchEditScreen.BDSE = (boolean) L[2];
+      InfoHudRelaunchEditScreen.DDSE = (boolean) L[3];
+      InfoHudRelaunchHud.FC = (int) L[4];
+      InfoHudRelaunchHud.PC = (int) L[5];
+      InfoHudRelaunchHud.BC = (int) L[6];
+      InfoHudRelaunchHud.DC = (int) L[7];
+      InfoHudRelaunchHud.FY = (int) L[8];
+      InfoHudRelaunchHud.CY = (int) L[9];
+      InfoHudRelaunchHud.BY = (int) L[10];
+      InfoHudRelaunchHud.DY = (int) L[11];
+    } catch (IOException info_hud_relaunch_e) {
+      throw new RuntimeException(info_hud_relaunch_e);
     }
 
-    ToggleHudKey = KeyMappingHelper.registerKeyMapping(new KeyMapping(
+    THK = KeyMappingHelper.registerKeyMapping(new KeyMapping(
         "key.info-hud-relaunch.toggle_hud",
         InputConstants.Type.KEYSYM,
         InputConstants.KEY_H,
-        Info_Hud_Custom_Category
+        IHCC
     ));
 
     HudElementRegistry.addLast(
@@ -52,8 +53,8 @@ public class InfoHudRelaunchClient implements ClientModInitializer {
         InfoHudRelaunchHud::render
     );
 
-    ClientTickEvents.END_CLIENT_TICK.register(client -> {
-      while (ToggleHudKey.consumeClick()) {
+    ClientTickEvents.END_CLIENT_TICK.register(info_hud_relaunch_client -> {
+      while (THK.consumeClick()) {
         if (InfoHudRelaunchEditScreen.EditScreenVisible) {
           InfoHudRelaunchHud.Visible = false;
         } else {
@@ -62,16 +63,16 @@ public class InfoHudRelaunchClient implements ClientModInitializer {
       }
     });
 
-    ToggleEditScreenKey = KeyMappingHelper.registerKeyMapping(new KeyMapping(
+    TESK = KeyMappingHelper.registerKeyMapping(new KeyMapping(
         "key.info-hud-relaunch.open_edit_screen",
         InputConstants.Type.KEYSYM,
         InputConstants.KEY_G,
-        Info_Hud_Custom_Category
+        IHCC
     ));
 
-    ClientTickEvents.END_CLIENT_TICK.register(client -> {
-      while (ToggleEditScreenKey.consumeClick()) {
-        client.gui.setScreen(new InfoHudRelaunchEditScreen(Component.empty()));
+    ClientTickEvents.END_CLIENT_TICK.register(info_hud_relaunch_client -> {
+      while (TESK.consumeClick()) {
+        info_hud_relaunch_client.gui.setScreen(new InfoHudRelaunchEditScreen(Component.empty()));
         InfoHudRelaunchEditScreen.EditScreenVisible = true;
       }
     });
