@@ -6,67 +6,67 @@ import net.minecraft.client.gui.GuiGraphicsExtractor;
 
 public class InfoHudRelaunchHud {
   public static boolean Visible = true;
-  public static int FPSColor = 0xFFFFFFFF;
-  public static int POSColor = 0xFFFFFFFF;
-  public static int BiomeColor = 0xFFFFFFFF;
-  public static int DayColor = 0xFFFFFFFF;
-  public static int FPSY = 5;
-  public static int CoordinatesY = 22;
-  public static int BiomeY = 39;
-  public static int DayY = 56;
+  public static int FC = 0xFFFFFFFF;
+  public static int PC = 0xFFFFFFFF;
+  public static int BC = 0xFFFFFFFF;
+  public static int DC = 0xFFFFFFFF;
+  public static int FY = 5;
+  public static int CY = 22;
+  public static int BY = 39;
+  public static int DY = 56;
 
-  public static void render(GuiGraphicsExtractor graphics, DeltaTracker deltaTracker) {
+  public static void render(GuiGraphicsExtractor G, DeltaTracker DT) {
     if (!Visible) return;
 
-    Minecraft client = Minecraft.getInstance();
-    if(client.debugEntries.isOverlayVisible()) return;
+    Minecraft C = Minecraft.getInstance();
+    if (C.debugEntries.isOverlayVisible()) return;
 
-    var player = Minecraft.getInstance().player;
-    int fps = Minecraft.getInstance().getFps();
-    double posX = 0;
-    double posY = 0;
-    double posZ = 0;
-    String biomeName = "";
-    int dayCounter = 0;
+    var P = C.player;
+    int F = C.getFps();
+    double PX = 0;
+    double PY = 0;
+    double PZ = 0;
+    String BN = "";
+    int DCN = 0;
 
-    if (player != null) {
-      posX = player.getX();
-      posY = player.getY();
-      posZ = player.getZ();
-      biomeName = player.level().getBiome(player.blockPosition())
+    if (P != null) {
+      PX = P.getX();
+      PY = P.getY();
+      PZ = P.getZ();
+      BN = P.level().getBiome(P.blockPosition())
           .unwrapKey()
-          .map(key -> key.identifier().getPath())
+          .map(info_hud_relaunch_key -> info_hud_relaunch_key.identifier().getPath())
           .orElse("Unknown");
-      biomeName = BiomeNameFormat(biomeName);
+      BN = BiomeNameFormat(BN);
 
-      long dayTime = player.level().getOverworldClockTime();
-      dayCounter = (int) (dayTime / 24000L);
+      long info_hud_relaunch_dayTime = P.level().getOverworldClockTime();
+      DCN = (int) (info_hud_relaunch_dayTime / 24000L);
     }
 
-    boolean FpsDropShadow = InfoHudRelaunchEditScreen.FpsDropShadowEnabled;
-    boolean PosDropShadow = InfoHudRelaunchEditScreen.PosDropShadowEnabled;
-    boolean BiomeDropShadow = InfoHudRelaunchEditScreen.BiomeDropShadowEnabled;
-    boolean DayDropShadow = InfoHudRelaunchEditScreen.DayDropShadowEnabled;
+    boolean FDSE = InfoHudRelaunchEditScreen.FDSE;
+    boolean PDSE = InfoHudRelaunchEditScreen.PDSE;
+    boolean BDSE = InfoHudRelaunchEditScreen.BDSE;
+    boolean DDSE = InfoHudRelaunchEditScreen.DDSE;
 
-    graphics.text(Minecraft.getInstance().font, "Fps : " + fps, 5, FPSY, FPSColor, FpsDropShadow);
-    graphics.text(Minecraft.getInstance().font, String.format("Position : %.3f / %.3f / %.3f", posX, posY, posZ), 5, CoordinatesY, POSColor, PosDropShadow);
-    graphics.text(Minecraft.getInstance().font, "Biome : " + biomeName, 5, BiomeY, BiomeColor, BiomeDropShadow);
-    graphics.text(Minecraft.getInstance().font, "Day : " + dayCounter, 5, DayY, DayColor, DayDropShadow);
+    G.text(C.font, "Fps : " + F, 5, FY, FC, FDSE);
+    G.text(C.font, String.format("Position : %.3f / %.3f / %.3f", PX, PY, PZ), 5, CY, PC, PDSE);
+    G.text(C.font, "Biome : " + BN, 5, BY, BC, BDSE);
+    G.text(C.font, "Day : " + DCN, 5, DY, DC, DDSE);
   }
 
-  private static String BiomeNameFormat(String raw) {
-    if (raw.isEmpty()) return raw;
+  private static String BiomeNameFormat(String R) {
+    if (R.isEmpty()) return R;
 
-    String[] words = raw.split("_");
-    StringBuilder result = new StringBuilder();
+    String[] info_hud_relaunch_words = R.split("_");
+    StringBuilder info_hud_relaunch_result = new StringBuilder();
 
-    for (String word : words) {
-      if (word.isEmpty()) continue;
-      result.append(Character.toUpperCase(word.charAt(0)))
-          .append(word.substring(1))
+    for (String info_hud_relaunch_word : info_hud_relaunch_words) {
+      if (info_hud_relaunch_word.isEmpty()) continue;
+      info_hud_relaunch_result.append(Character.toUpperCase(info_hud_relaunch_word.charAt(0)))
+          .append(info_hud_relaunch_word.substring(1))
           .append(" ");
     }
 
-    return result.toString().trim();
+    return info_hud_relaunch_result.toString().trim();
   }
 }
